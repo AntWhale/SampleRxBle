@@ -7,8 +7,9 @@ import com.polidea.rxandroidble2.RxBleDevice
 import com.polidea.rxandroidble2.RxBleDeviceServices
 import io.reactivex.disposables.Disposable
 import java.util.*
+import javax.inject.Inject
 
-class BleRepository {
+class BleRepository @Inject constructor(){
     var rxBleConnection: RxBleConnection? = null
     var rxBleDeviceServices: RxBleDeviceServices? = null
     var bleGattServices: List<BluetoothGattService>? = null

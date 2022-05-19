@@ -31,18 +31,23 @@ import com.polidea.rxandroidble2.RxBleClient
 import com.polidea.rxandroidble2.exceptions.BleScanException
 import com.polidea.rxandroidble2.scan.ScanResult
 import com.polidea.rxandroidble2.scan.ScanSettings
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.Disposable
 import io.reactivex.exceptions.UndeliverableException
 import io.reactivex.plugins.RxJavaPlugins
+import javax.inject.Inject
 
+//힐트를 적용해보자!!
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
 
-    private val bleRepository = BleRepository()
+    //private val bleRepository = BleRepository()
     //private var mViewModel:BleViewModel? = null
-    private val viewModel by lazy {
+    /*private val viewModel by lazy {
         ViewModelProvider(this, BleViewModel.Factory(bleRepository)).get(BleViewModel::class.java)
-    }
+    }*/
+    private val viewModel: BleViewModel by viewModels()
 
     private var adapter: BleListAdapter? = null
     private var requestEnableBluetooth = false

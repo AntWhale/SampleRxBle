@@ -18,15 +18,19 @@ import com.polidea.rxandroidble2.RxBleClient
 import com.polidea.rxandroidble2.RxBleConnection
 import com.polidea.rxandroidble2.RxBleDevice
 import com.polidea.rxandroidble2.exceptions.BleScanException
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 import java.nio.charset.Charset
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
 
-class BleViewModel(private val repository: BleRepository): ViewModel() {
+@HiltViewModel
+class BleViewModel @Inject constructor(private val repository: BleRepository): ViewModel() {
+
     class Factory(val repository: BleRepository): ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return BleViewModel(repository) as T
